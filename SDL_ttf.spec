@@ -1,8 +1,7 @@
-Summary: Simple DirectMedia Layer - Sample TrueType Font Library
+Summary: Simple DirectMedia Layer TrueType Font library
 Name: SDL_ttf
 Version: 2.0.6
 Release: 4
-Epoch: 0
 URL: http://www.libsdl.org/projects/SDL_ttf/
 Source0: http://www.libsdl.org/projects/SDL_ttf/release/SDL_ttf-2.0.6.tar.gz
 Patch0: %{name}-%{version}-openstream.patch
@@ -10,8 +9,8 @@ Patch1: %{name}-%{version}-ft2-build.patch
 License: LGPL
 Group: System Environment/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires: SDL-devel >= 0:1.2.4
-BuildRequires: freetype-devel >= 0:2.0
+BuildRequires: SDL-devel >= 1.2.4
+BuildRequires: freetype-devel >= 2.0
 BuildRequires: zlib-devel
 
 %description
@@ -19,9 +18,9 @@ This library allows you to use TrueType fonts to render text in SDL
 applications.
 
 %package devel
-Summary: Libraries, includes and more to develop SDL applications.
+Summary: Files to develop SDL applications which use TrueType fonts
 Group: Development/Libraries
-Requires: %{name} = %{epoch}:%{version}-%{release}
+Requires: %{name} = %{version}-%{release}
 
 %description devel
 This library allows you to use TrueType fonts to render text in SDL
@@ -77,7 +76,7 @@ rm -rf $RPM_BUILD_ROOT
 - Fedoraize
 - patch to compile on RH9
 
-* Wed Jan 19 2000 Sam Lantinga 
+* Wed Jan 19 2000 Sam Lantinga
 - converted to get package information from configure
 * Sun Jan 16 2000 Hakan Tandogan <hakan@iconsult.com>
 - initial spec file
