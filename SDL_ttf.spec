@@ -1,16 +1,18 @@
 Summary: Simple DirectMedia Layer - Sample TrueType Font Library
 Name: SDL_ttf
 Version: 2.0.6
-Release: 0.fdr.2.rh90
+Release: 0.fdr.4.1
 Epoch: 0
 URL: http://www.libsdl.org/projects/SDL_ttf/
 Source0: http://www.libsdl.org/projects/SDL_ttf/release/SDL_ttf-2.0.6.tar.gz
 Patch0: %{name}-%{version}-openstream.patch
+Patch1: %{name}-%{version}-ft2-build.patch
 License: LGPL
 Group: System Environment/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: SDL-devel >= 0:1.2.4
 BuildRequires: freetype-devel >= 0:2.0
+BuildRequires: zlib-devel
 
 %description
 This library allows you to use TrueType fonts to render text in SDL
@@ -29,6 +31,7 @@ resources needed for developing SDL_ttf applications.
 %prep
 %setup -q
 %patch -p1
+%patch1 -p1 -b .ft2
 
 %build
 %configure
@@ -59,6 +62,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/SDL/
 
 %changelog
+* Wed Mar 21 2004 Panu Matilainen <pmatilai@welho.com> 0:2.0.6-0.fdr.4
+- fix build on FC2-test (bug #1436
+
+* Mon Nov 10 2003 Panu Matilainen <pmatilai@welho.com> 0:2.0.6-0.fdr.3
+- add missing buildreq zlib-devel
+
 * Sun Aug 24 2003 Panu Matilainen <pmatilai@welho.com> 0:2.0.6-0.fdr.2
 - address issues in #631
 - add full URL to source
