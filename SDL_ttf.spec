@@ -1,7 +1,8 @@
 Summary: Simple DirectMedia Layer TrueType Font library
 Name: SDL_ttf
 Version: 2.0.6
-Release: 4
+Release: 5
+
 URL: http://www.libsdl.org/projects/SDL_ttf/
 Source0: http://www.libsdl.org/projects/SDL_ttf/release/SDL_ttf-2.0.6.tar.gz
 Patch0: %{name}-%{version}-openstream.patch
@@ -61,6 +62,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/SDL/
 
 %changelog
+* Fri Apr  7 2005 Michael Schwendt <mschwendt[AT]users.sf.net>
+- rebuilt
+
 * Wed Mar 21 2004 Panu Matilainen <pmatilai@welho.com> 0:2.0.6-0.fdr.4
 - fix build on FC2-test (bug #1436
 
