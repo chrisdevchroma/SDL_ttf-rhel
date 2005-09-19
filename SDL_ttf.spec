@@ -1,12 +1,9 @@
 Summary: Simple DirectMedia Layer TrueType Font library
 Name: SDL_ttf
-Version: 2.0.6
-Release: 5
-
+Version: 2.0.7
+Release: 1%{?dist}
 URL: http://www.libsdl.org/projects/SDL_ttf/
-Source0: http://www.libsdl.org/projects/SDL_ttf/release/SDL_ttf-2.0.6.tar.gz
-Patch0: %{name}-%{version}-openstream.patch
-Patch1: %{name}-%{version}-ft2-build.patch
+Source0: http://www.libsdl.org/projects/SDL_ttf/release/%{name}-%{version}.tar.gz
 License: LGPL
 Group: System Environment/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -22,6 +19,7 @@ applications.
 Summary: Files to develop SDL applications which use TrueType fonts
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
+Requires: SDL-devel >= 1.2.4
 
 %description devel
 This library allows you to use TrueType fonts to render text in SDL
@@ -30,17 +28,14 @@ resources needed for developing SDL_ttf applications.
 
 %prep
 %setup -q
-%patch -p1
-%patch1 -p1 -b .ft2
 
 %build
-%configure
+%configure --disable-dependency-tracking --disable-static
 make %{?_smp_mflags}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall
-
+make install DESTDIR=$RPM_BUILD_ROOT
 rm -f $RPM_BUILD_ROOT/%{_libdir}/*.la
 
 %clean
@@ -57,12 +52,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(-,root,root)
-%{_libdir}/*.a
 %{_libdir}/*.so
-%{_includedir}/SDL/
+%{_includedir}/SDL/*.h
 
 %changelog
-* Fri Apr  7 2005 Michael Schwendt <mschwendt[AT]users.sf.net>
+* Sun Sep 18 2005 Ville Skyttä <ville.skytta at iki.fi> - 2.0.7-1
+- 2.0.7, patches applied upstream.
+- Require SDL-devel in -devel.
+- Build with dependency tracking disabled.
+- Don't ship static libs.
+
+* Fri Apr  7 2005 Michael Schwendt <mschwendt[AT]users.sf.net> - 2.0.6-5
 - rebuilt
 
 * Wed Mar 21 2004 Panu Matilainen <pmatilai@welho.com> 0:2.0.6-0.fdr.4
