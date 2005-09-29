@@ -1,61 +1,79 @@
-Summary: Simple DirectMedia Layer TrueType Font library
-Name: SDL_ttf
-Version: 2.0.7
-Release: 1%{?dist}
-URL: http://www.libsdl.org/projects/SDL_ttf/
-Source0: http://www.libsdl.org/projects/SDL_ttf/release/%{name}-%{version}.tar.gz
-License: LGPL
-Group: System Environment/Libraries
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires: SDL-devel >= 1.2.4
-BuildRequires: freetype-devel >= 2.0
-BuildRequires: zlib-devel
+Name:		SDL_ttf
+Version:	2.0.7
+Release:	2%{?dist}
+Summary:	Simple DirectMedia Layer TrueType Font library
+
+Group:		System Environment/Libraries
+License:	LGPL
+URL:		http://www.libsdl.org/projects/SDL_ttf/
+Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+
+BuildRequires:	SDL-devel >= 1.2.4
+BuildRequires:	freetype-devel >= 2.0
+BuildRequires:	zlib-devel
+
 
 %description
 This library allows you to use TrueType fonts to render text in SDL
 applications.
 
+
 %package devel
-Summary: Files to develop SDL applications which use TrueType fonts
-Group: Development/Libraries
-Requires: %{name} = %{version}-%{release}
-Requires: SDL-devel >= 1.2.4
+Summary:	Files to develop SDL applications which use TrueType fonts
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+Requires:	SDL-devel >= 1.2.4
+
 
 %description devel
 This library allows you to use TrueType fonts to render text in SDL
 applications. This package provides the libraries, include files and other
 resources needed for developing SDL_ttf applications.
 
+
 %prep
 %setup -q
+
 
 %build
 %configure --disable-dependency-tracking --disable-static
 make %{?_smp_mflags}
+
 
 %install
 rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 rm -f $RPM_BUILD_ROOT/%{_libdir}/*.la
 
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+
 %post -p /sbin/ldconfig
 
+
 %postun -p /sbin/ldconfig
+
 
 %files
 %defattr(-,root,root)
 %doc README CHANGES COPYING
 %{_libdir}/lib*.so.*
 
+
 %files devel
 %defattr(-,root,root)
 %{_libdir}/*.so
 %{_includedir}/SDL/*.h
 
+
 %changelog
+* Thu Sep 29 2005 Brian Pepple <bdpepple@ameritech.net> - 2.0.7-2
+- General spec formatting changes.
+- Rebuild for FC4 upgrade path.
+
 * Sun Sep 18 2005 Ville Skyttä <ville.skytta at iki.fi> - 2.0.7-1
 - 2.0.7, patches applied upstream.
 - Require SDL-devel in -devel.
