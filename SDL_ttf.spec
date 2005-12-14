@@ -1,12 +1,13 @@
 Name:		SDL_ttf
 Version:	2.0.7
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Simple DirectMedia Layer TrueType Font library
 
 Group:		System Environment/Libraries
 License:	LGPL
 URL:		http://www.libsdl.org/projects/SDL_ttf/
 Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
+Patch1:		%{name}-%{version}-freetype-internals.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	SDL-devel >= 1.2.4
@@ -34,6 +35,7 @@ resources needed for developing SDL_ttf applications.
 
 %prep
 %setup -q
+%patch1 -p1 -b .freetype
 
 
 %build
@@ -70,6 +72,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Dec 14 2005 Brian Pepple <bdpepple@ameritech.net> - 2.0.7-3
+- Add patch for Bug #171020.
+
 * Thu Sep 29 2005 Brian Pepple <bdpepple@ameritech.net> - 2.0.7-2
 - General spec formatting changes.
 - Rebuild for FC4 upgrade path.
