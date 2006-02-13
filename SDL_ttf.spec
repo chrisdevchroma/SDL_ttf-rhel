@@ -1,6 +1,6 @@
 Name:		SDL_ttf
 Version:	2.0.7
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	Simple DirectMedia Layer TrueType Font library
 
 Group:		System Environment/Libraries
@@ -72,6 +72,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Feb 13 2006 Brian Pepple <bdpepple@ameritech.net> - 2.0.7-4
+- rebuilt for new gcc4.1 snapshot and glibc changes
+
 * Wed Dec 14 2005 Brian Pepple <bdpepple@ameritech.net> - 2.0.7-3
 - Add patch for Bug #171020.
 
