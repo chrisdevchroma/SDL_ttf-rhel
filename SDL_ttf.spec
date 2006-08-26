@@ -1,13 +1,13 @@
 Name:		SDL_ttf
-Version:	2.0.7
-Release:	4%{?dist}
+Version:	2.0.8
+Release:	1%{?dist}
 Summary:	Simple DirectMedia Layer TrueType Font library
 
 Group:		System Environment/Libraries
 License:	LGPL
 URL:		http://www.libsdl.org/projects/SDL_ttf/
 Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
-Patch1:		%{name}-%{version}-freetype-internals.patch
+Patch1:		%{name}-2.0.7-freetype-internals.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	SDL-devel >= 1.2.4
@@ -21,16 +21,15 @@ applications.
 
 
 %package devel
-Summary:	Files to develop SDL applications which use TrueType fonts
+Summary:	Development files for %{name}
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	SDL-devel >= 1.2.4
 
 
 %description devel
-This library allows you to use TrueType fonts to render text in SDL
-applications. This package provides the libraries, include files and other
-resources needed for developing SDL_ttf applications.
+The %{name}-devel package contains libraries and header files for
+developing applications that use %{name}.
 
 
 %prep
@@ -46,7 +45,7 @@ make %{?_smp_mflags}
 %install
 rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
-rm -f $RPM_BUILD_ROOT/%{_libdir}/*.la
+find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %clean
@@ -68,10 +67,14 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(-,root,root)
 %{_libdir}/*.so
-%{_includedir}/SDL/*.h
+%{_includedir}/SDL/
 
 
 %changelog
+* Sat Aug 26 2006 Brian Pepple <bpepple@fedoraproject.org> - 2.0.8-1
+- Update to 2.0.8.
+- Simplify description & summary for devel package.
+
 * Mon Feb 13 2006 Brian Pepple <bdpepple@ameritech.net> - 2.0.7-4
 - rebuilt for new gcc4.1 snapshot and glibc changes
 
