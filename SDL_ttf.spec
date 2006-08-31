@@ -1,6 +1,6 @@
 Name:		SDL_ttf
 Version:	2.0.8
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Simple DirectMedia Layer TrueType Font library
 
 Group:		System Environment/Libraries
@@ -71,6 +71,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Aug 31 2006 Brian Pepple <bpepple@fedoraproject.org> - 2.0.8-2
+- Update for FC6.
+
 * Sat Aug 26 2006 Brian Pepple <bpepple@fedoraproject.org> - 2.0.8-1
 - Update to 2.0.8.
 - Simplify description & summary for devel package.
