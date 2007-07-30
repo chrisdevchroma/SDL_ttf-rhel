@@ -1,13 +1,12 @@
 Name:		SDL_ttf
-Version:	2.0.8
-Release:	2%{?dist}
+Version:	2.0.9
+Release:	1%{?dist}
 Summary:	Simple DirectMedia Layer TrueType Font library
 
 Group:		System Environment/Libraries
 License:	LGPL
 URL:		http://www.libsdl.org/projects/SDL_ttf/
 Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
-Patch1:		%{name}-2.0.7-freetype-internals.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	SDL-devel >= 1.2.4
@@ -34,7 +33,6 @@ developing applications that use %{name}.
 
 %prep
 %setup -q
-%patch1 -p1 -b .freetype
 
 
 %build
@@ -71,6 +69,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Jul 30 2007 Brian Pepple <bpepple@fedoraproject.org> - 2.0.9-1
+- Update to 2.0.9.
+- Drop freetype-internals patch. fixed upstream.
+
 * Thu Aug 31 2006 Brian Pepple <bpepple@fedoraproject.org> - 2.0.8-2
 - Update for FC6.
 
