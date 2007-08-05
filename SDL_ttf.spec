@@ -1,10 +1,10 @@
 Name:		SDL_ttf
 Version:	2.0.9
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Simple DirectMedia Layer TrueType Font library
 
 Group:		System Environment/Libraries
-License:	LGPL
+License:	LGPLv2+
 URL:		http://www.libsdl.org/projects/SDL_ttf/
 Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -69,6 +69,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Aug  5 2007 Brian Pepple <bpepple@fedoraproject.org> - 2.0.9-2
+- Update license tag.
+
 * Mon Jul 30 2007 Brian Pepple <bpepple@fedoraproject.org> - 2.0.9-1
 - Update to 2.0.9.
 - Drop freetype-internals patch. fixed upstream.
