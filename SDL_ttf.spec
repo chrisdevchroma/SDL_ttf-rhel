@@ -66,7 +66,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %{_libdir}/*.so
 %{_includedir}/SDL/
-
+%{_libdir}/pkgconfig/SDL_ttf.pc
 
 %changelog
 * Thu Aug 12 2010 Thomas Janssen <thomasj@fedoraproject.org> 2.0.10-1
