@@ -1,6 +1,6 @@
 Name:		SDL_ttf
 Version:	2.0.11
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Simple DirectMedia Layer TrueType Font library
 
 Group:		System Environment/Libraries
@@ -69,6 +69,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/SDL_ttf.pc
 
 %changelog
+* Wed Feb 13 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.0.11-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
 * Wed Jul 18 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.0.11-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
