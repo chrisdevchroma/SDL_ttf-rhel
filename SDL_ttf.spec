@@ -8,6 +8,7 @@ License:	LGPLv2+
 URL:		http://www.libsdl.org/projects/SDL_ttf/
 Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
 
+BuildRequires:  gcc
 BuildRequires:	SDL-devel >= 1.2.4
 BuildRequires:	freetype-devel >= 2.0
 BuildRequires:	zlib-devel
