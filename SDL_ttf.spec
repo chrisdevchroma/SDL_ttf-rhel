@@ -54,13 +54,11 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %files
-%defattr(-,root,root)
 %doc README CHANGES COPYING
 %{_libdir}/lib*.so.*
 
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/*.so
 %{_includedir}/SDL/
 %{_libdir}/pkgconfig/SDL_ttf.pc
