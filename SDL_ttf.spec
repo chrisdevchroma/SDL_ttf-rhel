@@ -3,7 +3,6 @@ Version:	2.0.11
 Release:	13%{?dist}
 Summary:	Simple DirectMedia Layer TrueType Font library
 
-Group:		System Environment/Libraries
 License:	LGPLv2+
 URL:		http://www.libsdl.org/projects/SDL_ttf/
 Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
@@ -21,7 +20,6 @@ applications.
 
 %package devel
 Summary:	Development files for %{name}
-Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	SDL-devel >= 1.2.4
 
